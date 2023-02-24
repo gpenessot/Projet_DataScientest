@@ -35,23 +35,6 @@ df_train=data.sample(frac=0.80,
                      random_state=21)
 df_val=data.drop(df_train.index)
 
-"""
-@tf.function
-def load_image(filepath, resize=(256,256)):
-    im = tf.io.read_file(filepath)
-    im = tf.image.decode_png(im, channels=3)
-    return tf.image.resize(im, resize)
-
-
-dataset_train = tf.data.Dataset.from_tensor_slices((X_train_path, y_train))
-dataset_train = dataset_train.map(lambda x, y : [load_image(x), y], num_parallel_calls =-1)
-dataset_train = dataset_train.batch(32)
-
-dataset_test = tf.data.Dataset.from_tensor_slices((X_test_path, y_test))
-dataset_test = dataset_test.map(lambda x, y : [load_image(x), y], num_parallel_calls =-1)
-dataset_test = dataset_test.batch(32)
-"""
-
 # model creation
 def create_model(filters=256, kernel_size=(7, 7), rate=0.2):
     model = models.Sequential()
